@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import backgroundImage from "../assets/sky.jpg"; // Import the image with the correct relative path
+import backgroundImage from "../../public/images/sky.jpg"; // Import the image with the correct relative path
 
 import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
 

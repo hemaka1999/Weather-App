@@ -192,13 +192,13 @@ function WeatherApp({ isAuthenticated }) {
     }
 
     if (weatherConditions === "Clouds") {
-      return `url('../src/assets/${timeOfDay}_cloudy.jpg')`;
+      return `url('../public/images/${timeOfDay}_cloudy.jpg')`;
     } else if (weatherConditions === "Rain") {
-      return `url('../src/assets/${timeOfDay}_rainy.jpg')`;
+      return `url('../public/images/${timeOfDay}_rainy.jpg')`;
     } else if (weatherConditions === "Clear") {
-      return `url('../src/assets/${timeOfDay}_sun.jpg')`;
+      return `url('../public/images/${timeOfDay}_sun.jpg')`;
     } else {
-      return `url('../src/assets/${timeOfDay}_cloudy.jpg')`; // Default image if conditions don't match
+      return `url('../public/images/${timeOfDay}_cloudy.jpg')`; // Default image if conditions don't match
     }
   };
 
@@ -256,7 +256,7 @@ function WeatherApp({ isAuthenticated }) {
           }
         `}
       </style>
-      <div id="navBar" className="bg-dark text-center py-3">
+      <div id="navBar" className="bg-dark text-center py-2">
         <h1 className="fw-bold h3 text-light my-1">
           Mickey Arthur's Weather App
         </h1>
@@ -264,7 +264,10 @@ function WeatherApp({ isAuthenticated }) {
 
       <div className="row">
         <div className="col-12 col-md-6 col-lg-4 ">
-          <div className="card bg-light bg-gradient my-1">
+          <div className="card bg-light bg-gradient my-1" style={{
+                background: "rgba(255, 255, 255, 0.6)",
+                borderRadius: "1rem",
+              }}>
             <div className="card-body">
               <h2 className="card-title">Search by Latitude and Longitude</h2>
               <form onSubmit={handleSearch}>
@@ -310,14 +313,14 @@ function WeatherApp({ isAuthenticated }) {
         <div className="col-xxl-9 col-md-8 mt-md-1 mt-4 pe-lg-4 mx-auto">
           <div
             id="colomboWeather"
-            className="current-weather bg-success text-center text-white py-2 px-4 rounded-3"
+            className="current-weather bg-success text-center text-white py-1 px-4 rounded-3"
             style={{
               backgroundImage: backgroundImage,
               backgroundSize: "cover",
               backgroundPosition: "center center",
             }}
           >
-            <div className="mt-3 d-flex justify-content-center">
+            <div className="mt-1 d-flex justify-content-center">
               <div style={{ position: "relative" }} className="w-100">
                 <h3 className="fw-bold">Colombo ({getCurrentDate()})</h3>
 
@@ -334,18 +337,18 @@ function WeatherApp({ isAuthenticated }) {
                     alt="Weather Icon"
                   />
                 )}
-                <h4 className="my-3 mt-3">
+                <h4 className="my-2 mt-3">
                   {colomboWeather.weather && colomboWeather.weather.length > 0
                     ? colomboWeather.weather[0].description.toUpperCase()
                     : "N/A"}
                 </h4>
-                <h6 className="my-3 mt-3">
+                <h6 className="my-2 mt-3">
                   Temperature: {colomboWeather.main?.temp}°C
                 </h6>
-                <h6 className="my-3">
+                <h6 className="my-2">
                   Wind: {(colomboWeather.wind?.speed * 3.6).toFixed(2)} km/h
                 </h6>
-                <h6 className="my-3">
+                <h6 className="my-2">
                   Humidity: {colomboWeather.main?.humidity}%
                 </h6>
               </div>
@@ -353,8 +356,8 @@ function WeatherApp({ isAuthenticated }) {
           </div>
           <div className="col-xxl-9 col-md-8 mt-md-1 mt-4 pe-lg-4 mx-auto">
             {/* Add space and horizontal line here */}
-            <div className="my-4">
-              <hr className="my-4" style={{ borderTop: "2px solid #777" }} />
+            <div className="my-3">
+              <hr className="my-1" style={{ borderTop: "2px solid #777" }} />
             </div>
 
             {/* Conditionally render the temporaryData div only after the search button click */}
@@ -407,7 +410,7 @@ function WeatherApp({ isAuthenticated }) {
               </div>
             )}
           </div>
-          <h4 id="changeForecast" className="fw-bold my-4">
+          <h4 id="changeForecast" className="fw-bold my-2">
             {searched ? `Forecast in ${weatherData.name}` : "Forecast"}
           </h4>
 
