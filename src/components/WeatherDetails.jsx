@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { auth } from './firebase'; // Import your Firebase authentication module
+import { auth } from "./firebase"; // Import your Firebase authentication module
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 
 // Define your API key and endpoint from OpenWeatherMap
@@ -20,7 +20,6 @@ function WeatherApp({ isAuthenticated }) {
   const [forecast, setForecast] = useState([]);
   const [showMoreForecasts, setShowMoreForecasts] = useState(false); // Add this state variable
   const navigate = useNavigate();
-
 
   const handleRefresh = () => {
     window.location.reload(); // Reload the page
@@ -243,16 +242,16 @@ function WeatherApp({ isAuthenticated }) {
     };
   }, []);
 
-
   const handleLogout = () => {
     // Add the logic to sign out the user from Firebase or your authentication system.
-    auth.signOut() // Replace with the actual sign-out function of your authentication system
+    auth
+      .signOut() // Replace with the actual sign-out function of your authentication system
       .then(() => {
-        localStorage.removeItem('isAuthenticated'); // Remove the authentication status from local storage
-        navigate('/login'); // Redirect to the login page
+        localStorage.removeItem("isAuthenticated"); // Remove the authentication status from local storage
+        navigate("/login"); // Redirect to the login page
       })
       .catch((error) => {
-        console.error('Error logging out:', error);
+        console.error("Error logging out:", error);
       });
   };
 
@@ -273,32 +272,32 @@ function WeatherApp({ isAuthenticated }) {
         `}
       </style>
       <nav className="navbar navbar-inverse">
-  <div className="container-fluid bg-dark text-center py-2">
-    <div className="navbar-header ">
-      <h1 className="fw-bold h3 text-light my-1">
-        Mickey Arthur's Weather App
-      </h1>
-    </div>
-    <ul className="nav navbar-nav"></ul>
-    <ul className="nav navbar-nav navbar-right">
-      <li>
-        <button onClick={handleLogout} className="btn btn-danger">
-          Logout
-        </button>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-
-
+        <div className="container-fluid bg-dark text-center py-2">
+          <div className="navbar-header ">
+            <h1 className="fw-bold h3 text-light my-1">
+              Mickey Arthur's Weather App
+            </h1>
+          </div>
+          <ul className="nav navbar-nav"></ul>
+          <ul className="nav navbar-nav navbar-right">
+            <li>
+              <button onClick={handleLogout} className="btn btn-danger">
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
       <div className="row">
         <div className="col-12 col-md-6 col-lg-4 ">
-          <div className="card bg-light bg-gradient my-1" style={{
-                background: "rgba(255, 255, 255, 0.6)",
-                borderRadius: "1rem",
-              }}>
+          <div
+            className="card bg-light bg-gradient my-1"
+            style={{
+              background: "rgba(255, 255, 255, 0.6)",
+              borderRadius: "1rem",
+            }}
+          >
             <div className="card-body">
               <h2 className="card-title">Search by Latitude and Longitude</h2>
               <form onSubmit={handleSearch}>
@@ -442,18 +441,17 @@ function WeatherApp({ isAuthenticated }) {
             )}
           </div>
           <div className="row">
-  <div className="col-md-6">
-    <h4 id="changeForecast" className="fw-bold my-2">
-      {searched ? `Forecast in ${weatherData.name}` : "Forecast"}
-    </h4>
-  </div>
-  <div className="col-md-6 text-end">
-    <button onClick={toggleForecasts} className="btn btn-dark">
-      {showMoreForecasts ? "Hide Forecasts" : "View Forecasts"}
-    </button>
-  </div>
-</div>
-          
+            <div className="col-md-6">
+              <h4 id="changeForecast" className="fw-bold my-2">
+                {searched ? `Forecast in ${weatherData.name}` : "Forecast"}
+              </h4>
+            </div>
+            <div className="col-md-6 text-end">
+              <button onClick={toggleForecasts} className="btn btn-dark">
+                {showMoreForecasts ? "Hide Forecasts" : "View Forecasts"}
+              </button>
+            </div>
+          </div>
 
           <div
             id="changeData"
@@ -487,10 +485,8 @@ function WeatherApp({ isAuthenticated }) {
                             Humidity: {forecast.main?.humidity}%
                           </h6>
                         </div>
-                        
                       </div>
                     )}
-                    
                   </div>
                 ))
               : dailyForecast.map((forecast, index) => (
@@ -525,7 +521,6 @@ function WeatherApp({ isAuthenticated }) {
                   </div>
                 ))}
           </div>
-          
         </div>
       </div>
     </div>

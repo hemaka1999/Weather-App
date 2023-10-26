@@ -40,10 +40,7 @@ function App() {
           />
 
           {/* Add a default route that redirects to the login page */}
-          <Route
-            path="/*"
-            element={<Navigate to="/login" />}
-          />
+          <Route path="/*" element={<Navigate to="/login" />} />
           {/* Add more routes for other pages as needed */}
         </Routes>
       </Router>
