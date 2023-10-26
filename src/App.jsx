@@ -4,7 +4,7 @@ import {
   Route,
   Routes,
   Navigate,
-} from "react-router-dom"; // Import Navigate
+} from "react-router-dom";
 import Login from "./components/Login";
 import WeatherDetails from "./components/WeatherDetails";
 
@@ -37,6 +37,12 @@ function App() {
             element={
               isAuthenticated ? <WeatherDetails /> : <Navigate to="/login" />
             }
+          />
+
+          {/* Add a default route that redirects to the login page */}
+          <Route
+            path="/*"
+            element={<Navigate to="/login" />}
           />
           {/* Add more routes for other pages as needed */}
         </Routes>
