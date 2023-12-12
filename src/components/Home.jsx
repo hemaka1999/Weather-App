@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-// Define your API key and endpoint from OpenWeatherMap
 const API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY';
 const API_ENDPOINT = 'https://api.openweathermap.org/data/2.5';
 

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { auth } from "./firebase"; // Import your Firebase authentication module
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+import { auth } from "./firebase"; 
+import { useNavigate } from "react-router-dom"; 
 
-// Define your API key and endpoint from OpenWeatherMap
 const API_KEY = "2e0e014306bbb8e6229c5dfa3115f32d"; // Replace with your API key
 const API_ENDPOINT = "https://api.openweathermap.org/data/2.5";
 
@@ -18,7 +17,7 @@ function WeatherApp({ isAuthenticated }) {
   const [backgroundImageSearched, setBackgroundImageSearched] = useState(null); // Background image state for the searched location
   const [weatherIcon, setWeatherIcon] = useState(null); // Weather icon state
   const [forecast, setForecast] = useState([]);
-  const [showMoreForecasts, setShowMoreForecasts] = useState(false); // Add this state variable
+  const [showMoreForecasts, setShowMoreForecasts] = useState(false);
   const navigate = useNavigate();
 
   const handleRefresh = () => {
@@ -36,7 +35,7 @@ function WeatherApp({ isAuthenticated }) {
       })
       .then((data) => {
         setColomboWeather(data);
-        // Set the weather icon here
+        // Set the weather icon
         if (data.weather && data.weather.length > 0) {
           setWeatherIcon(data.weather[0].icon);
         }
@@ -48,7 +47,7 @@ function WeatherApp({ isAuthenticated }) {
 
   // Function to fetch the daily forecast for Colombo
   const fetchColomboDailyForecast = () => {
-    // Use the same API_KEY as defined above
+
     fetch(
       `${API_ENDPOINT}/forecast?lat=6.9271&lon=79.8612&appid=${API_KEY}&units=metric`
     )
@@ -200,7 +199,7 @@ function WeatherApp({ isAuthenticated }) {
     } else if (weatherConditions === "Clear") {
       return `url('../public/images/${timeOfDay}_sun.jpg')`;
     } else {
-      return `url('../public/images/${timeOfDay}_cloudy.jpg')`; // Default image if conditions don't match
+      return `url('../public/images/${timeOfDay}_cloudy.jpg')`;
     }
   };
 
@@ -390,13 +389,12 @@ function WeatherApp({ isAuthenticated }) {
               <hr className="my-1" style={{ borderTop: "2px solid #777" }} />
             </div>
 
-            {/* Conditionally render the temporaryData div only after the search button click */}
             {searched && weatherData && (
               <div className="col mb-3" id="temporaryData">
                 <div
                   className="card border-0 bg-secondary text-white"
                   style={{
-                    backgroundImage: backgroundImageSearched, // Use the searched location's background image
+                    backgroundImage: backgroundImageSearched, 
                     backgroundSize: "cover",
                     backgroundPosition: "center center",
                   }}

@@ -14,10 +14,7 @@ function App() {
   );
 
   useEffect(() => {
-    // You can implement logic here to check if the user is authenticated.
-    // If the user is authenticated, set isAuthenticated to true.
-    // For example, you can use Firebase Auth state listeners.
-    // Here's a simplified example using a timeout.
+  
     setTimeout(() => {
       setIsAuthenticated(true); // Set this to true if the user is authenticated.
     }, 2000);
@@ -38,10 +35,8 @@ function App() {
               isAuthenticated ? <WeatherDetails /> : <Navigate to="/login" />
             }
           />
-
-          {/* Add a default route that redirects to the login page */}
           <Route path="/*" element={<Navigate to="/login" />} />
-          {/* Add more routes for other pages as needed */}
+          
         </Routes>
       </Router>
     </div>

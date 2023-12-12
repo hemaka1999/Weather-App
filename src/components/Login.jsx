@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import backgroundImage from "../../public/images/sky.jpg"; // Import the image with the correct relative path
-
-import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
-
+import backgroundImage from "../../public/images/sky.jpg"; 
+import { useNavigate } from "react-router-dom"; 
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 
 function Login({ setIsAuthenticated }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Use useNavigate to get the navigation function
-
+  const navigate = useNavigate(); 
   const login = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
@@ -32,7 +29,7 @@ function Login({ setIsAuthenticated }) {
         id="loginBackground"
         className="container-fluid py-5 vw-100"
         style={{
-          backgroundImage: `url(${backgroundImage})`, // Use the imported image
+          backgroundImage: `url(${backgroundImage})`, 
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
